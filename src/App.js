@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from "./components/Header";
 import pages from "./utils/pages";
 import './App.css';
+import Reservations from "./pages/reservations/Reservations";
+
 
 function Home() {
   return <h2>Home Page</h2>;
@@ -16,9 +18,9 @@ function Menu() {
   return <h2>Menu</h2>;
 }
 
-function Reservations() {
-  return <h2>Reservations</h2>;
-}
+// function Reservations() {
+//   return <h2>Reservations</h2>;
+// }
 
 function Orders() {
   return <h2>Orders</h2>;
@@ -32,6 +34,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <React.Fragment>
       <Routes>
         <Route path={pages.get("home").path} element={<Home />} />
         <Route path={pages.get("about").path} element={<About />} />
@@ -44,6 +47,7 @@ function App() {
         <Route path={pages.get("login").path} element={<Login />} />
         <Route path="*" element={<Home />} />
       </Routes>
+      </React.Fragment>
     </Router>
   );
 }
