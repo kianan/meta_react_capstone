@@ -18,10 +18,6 @@ function Menu() {
   return <h2>Menu</h2>;
 }
 
-// function Reservations() {
-//   return <h2>Reservations</h2>;
-// }
-
 function Orders() {
   return <h2>Orders</h2>;
 }
