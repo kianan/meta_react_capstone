@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useReducer, act } from "react";
 import ReservationsForm from "./ReservationsForm"; // Child component (BookingForm)
+import { useNavigate } from 'react-router-dom';
+import pages from "../../utils/pages";
+
 
 export const initializeTimes = (actionDate) => {
     // TODO: maybe refactor to have initial timing here
@@ -36,6 +39,7 @@ const Reservations = () => {
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
+  const navigate = useNavigate();
 
   // Handle form submission
   const handleSubmit = (event) => {
@@ -46,6 +50,11 @@ const Reservations = () => {
       guests,
       occasion
     });
+    const formData = { date, time, guests, occasion };
+    /* global submitAPI */
+    if (submitAPI(formData)) {
+        navigate(pages.get("confirmedbooking").path); // Redirect to the confirmation page
+    }
   };
 
   return (

@@ -7,7 +7,7 @@ pages.set('reservations', {
   path: '/reservations', 
   anchorable: true 
 });
-pages.set('confirmedBooking', { 
+pages.set('confirmedbooking', { 
   name: 'Confirmed Booking', 
   path: '/confirmed-booking', 
   anchorable: false 

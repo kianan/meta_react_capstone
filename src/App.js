@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import pages from "./utils/pages";
 import './App.css';
 import Reservations from "./pages/reservations/Reservations";
+import ConfirmedReservation from './pages/reservations/ConfirmedReservation';
 
 
 function Home() {
@@ -41,6 +42,7 @@ function App() {
           />
         <Route path={pages.get("orders").path} element={<Orders />} />
         <Route path={pages.get("login").path} element={<Login />} />
+        <Route path={pages.get("confirmedbooking").path} element={<ConfirmedReservation />} />
         <Route path="*" element={<Home />} />
       </Routes>
       </React.Fragment>
