@@ -91,6 +91,7 @@ const ReservationsForm = ({
         aria-required="true"
         required // This makes the date field mandatory
         min={new Date().toISOString().split("T")[0]} // Ensures you can't pick a date in the past
+        aria-label="Select a reservation date"
       />
       {formik.touched.date && formik.errors.date ? (
         <span style={{ color: "red" }}>{formik.errors.date}</span>
@@ -105,6 +106,7 @@ const ReservationsForm = ({
         onBlur={formik.handleBlur}
         aria-required="true"
         required
+        aria-label="Select a reservation time"
       >
         <option value="">Select a time</option>
         {availableTimes.map((availableTime) => (
@@ -145,6 +147,7 @@ const ReservationsForm = ({
         onBlur={formik.handleBlur}
         aria-required="true"
         required
+        aria-label="Select the occasion"
       >
         <option>Birthday</option>
         <option>Anniversary</option>
