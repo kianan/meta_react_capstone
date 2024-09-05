@@ -1,17 +1,27 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useEffect, useReducer, act } from "react";
 import ReservationsForm from "./ReservationsForm"; // Child component (BookingForm)
 
-// Step 1: Define a function to initialize available times
-export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+export const initializeTimes = (actionDate) => {
+    // TODO: maybe refactor to have initial timing here
+    const date = new Date(actionDate);
+    try{
+        /* global fetchAPI */
+        const availableTimes = fetchAPI(date);
+        return availableTimes;
+    }
+    catch(error)
+    {
+        console.error("Error fetching available times:", error);
+        return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+    }
 };
+
 
 // Step 2: Define a reducer function to update available times based on the selected date
 export const updateTimes = (state, action) => {
   switch (action.type) {
     case "UPDATE_TIMES":
-      // For now, we return the same available times, regardless of date
-      return initializeTimes();
+      return initializeTimes(action.payload);
     default:
       return state;
   }
