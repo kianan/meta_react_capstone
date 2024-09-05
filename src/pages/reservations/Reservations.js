@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, act } from "react";
+import React, { useState, useReducer} from "react";
 import ReservationsForm from "./ReservationsForm"; // Child component (BookingForm)
 import { useNavigate } from 'react-router-dom';
 import pages from "../../utils/pages";
@@ -43,7 +43,7 @@ const Reservations = () => {
 
   // Handle form submission
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     console.log({
       date,
       time,
