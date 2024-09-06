@@ -1,5 +1,6 @@
 import React, { useState, useReducer} from "react";
 import ReservationsForm from "./ReservationsForm"; // Child component (BookingForm)
+import "../reservations/Reservations.css";
 import { useNavigate } from 'react-router-dom';
 import pages from "../../utils/pages";
 

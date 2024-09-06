@@ -73,88 +73,90 @@ const ReservationsForm = ({
   });
 
   return (
-    <form
-      style={{ display: "grid", maxWidth: "200px", gap: "20px" }}
-      onSubmit={formik.handleSubmit}
-      aria-labelledby="reservation-form-title"
-    >
-      <h2 id="reservation-form-title">Reservation Form</h2>
-
-      <label htmlFor="res-date">Choose date</label>
-      <input
-        type="date"
-        id="res-date"
-        value={formik.values.date}
-        onChange={handleDateChange}
-        // onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        aria-required="true"
-        required // This makes the date field mandatory
-        min={new Date().toISOString().split("T")[0]} // Ensures you can't pick a date in the past
-        aria-label="Select a reservation date"
-      />
-      {formik.touched.date && formik.errors.date ? (
-        <span style={{ color: "red" }}>{formik.errors.date}</span>
-      ) : null}
-
-      <label htmlFor="res-time">Choose time</label>
-      <select
-        id="res-time"
-        value={formik.values.time}
-        onChange={(e) => setTime(e.target.value)}
-        // onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        aria-required="true"
-        required
-        aria-label="Select a reservation time"
+    <div className="container">
+      <form
+        style={{ display: "grid", maxWidth: "500px", gap: "20px" }}
+        onSubmit={formik.handleSubmit}
+        aria-labelledby="reservation-form-title"
       >
-        <option value="">Select a time</option>
-        {availableTimes.map((availableTime) => (
-          <option key={availableTime} value={availableTime}>
-            {availableTime}
-          </option>
-        ))}
-      </select>
-      {formik.touched.time && formik.errors.time ? (
-        <span style={{ color: "red" }}>{formik.errors.time}</span>
-      ) : null}
+        <h2 id="reservation-form-title">Reservation Form</h2>
 
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        type="number"
-        placeholder="1"
-        min="1"
-        max="10"
-        id="guests"
-        value={formik.values.guests}
-        onBlur={formik.handleBlur}
-        // onChange={formik.handleChange}
-        onChange={(e) => setGuests(e.target.value)}
-        aria-required="true"
-        aria-label="Enter number of guests"
-        required
-      />
-      {formik.touched.guests && formik.errors.guests ? (
-        <span style={{ color: "red" }}>{formik.errors.guests}</span>
-      ) : null}
+        <label htmlFor="res-date">Choose date</label>
+        <input
+          type="date"
+          id="res-date"
+          value={formik.values.date}
+          onChange={handleDateChange}
+          // onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          aria-required="true"
+          required // This makes the date field mandatory
+          min={new Date().toISOString().split("T")[0]} // Ensures you can't pick a date in the past
+          aria-label="Select a reservation date"
+        />
+        {formik.touched.date && formik.errors.date ? (
+          <span style={{ color: "red" }}>{formik.errors.date}</span>
+        ) : null}
 
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        id="occasion"
-        value={formik.values.occasion}
-        onChange={(e) => setOccasion(e.target.value)}
-        // onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        aria-required="true"
-        required
-        aria-label="Select the occasion"
-      >
-        <option>Birthday</option>
-        <option>Anniversary</option>
-      </select>
+        <label htmlFor="res-time">Choose time</label>
+        <select
+          id="res-time"
+          value={formik.values.time}
+          onChange={(e) => setTime(e.target.value)}
+          // onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          aria-required="true"
+          required
+          aria-label="Select a reservation time"
+        >
+          <option value="">Select a time</option>
+          {availableTimes.map((availableTime) => (
+            <option key={availableTime} value={availableTime}>
+              {availableTime}
+            </option>
+          ))}
+        </select>
+        {formik.touched.time && formik.errors.time ? (
+          <span style={{ color: "red" }}>{formik.errors.time}</span>
+        ) : null}
 
-      <input type="submit" value="Make Your reservation" aria-label="Submit reservation" />
-    </form>
+        <label htmlFor="guests">Number of guests</label>
+        <input
+          type="number"
+          placeholder="1"
+          min="1"
+          max="10"
+          id="guests"
+          value={formik.values.guests}
+          onBlur={formik.handleBlur}
+          // onChange={formik.handleChange}
+          onChange={(e) => setGuests(e.target.value)}
+          aria-required="true"
+          aria-label="Enter number of guests"
+          required
+        />
+        {formik.touched.guests && formik.errors.guests ? (
+          <span style={{ color: "red" }}>{formik.errors.guests}</span>
+        ) : null}
+
+        <label htmlFor="occasion">Occasion</label>
+        <select
+          id="occasion"
+          value={formik.values.occasion}
+          onChange={(e) => setOccasion(e.target.value)}
+          // onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          aria-required="true"
+          required
+          aria-label="Select the occasion"
+        >
+          <option>Birthday</option>
+          <option>Anniversary</option>
+        </select>
+
+        <input type="submit" value="Make Your reservation" aria-label="Submit reservation" />
+      </form>
+    </div>
   );
 };
 
